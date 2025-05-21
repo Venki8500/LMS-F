@@ -8,7 +8,7 @@ function AddLoan() {
 
   return (
     <div>
-      <ManagerNav></ManagerNav>
+      {/* <ManagerNav></ManagerNav> */}
       
       <Formik
         initialValues={{
