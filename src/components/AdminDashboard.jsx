@@ -33,20 +33,7 @@ function AdminDashboard() {
       
      }
     return(
-        <div className="bg-light min-vh-100">
-            <div className="container py-5">
-                <div className="card shadow-lg">
-                    <div className="card-header bg-primary text-white py-3">
-                        <h2 className="mb-0 text-center">Loan Management Dashboard</h2>
-                    </div>
-                    <div className="card-body p-4">
-                        {isLoading ? (
-                            <div className="text-center py-4">
-                                <div className="spinner-border text-primary" role="status">
-                                    <span className="visually-hidden">Loading...</span>
-                                </div>
-                            </div>
-                        ) : (
+         
                             <div className="table-responsive">
                                 <table className="table table-hover align-middle mb-0">
                                     <thead className="table-light">
@@ -103,11 +90,5 @@ function AdminDashboard() {
                                 </table>
                             </div>
                         )}
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
-}
-
+                
 export default AdminDashboard;
