@@ -33,20 +33,7 @@ function Dashboard() {
      
     }
     return (
-        <div className="bg-light min-vh-100 py-5">
-            <div className="container">
-                <div className="card shadow-lg">
-                    <div className="card-header bg-primary text-white py-3">
-                        <h2 className="mb-0 text-center">EMI Payment Dashboard</h2>
-                    </div>
-                    <div className="card-body p-4">
-                        {isLoading ? (
-                            <div className="text-center py-4">
-                                <div className="spinner-border text-primary" role="status">
-                                    <span className="visually-hidden">Loading...</span>
-                                </div>
-                            </div>
-                        ) : (
+       
                             <div className="table-responsive">
                                 <table className="table table-hover align-middle mb-0">
                                     <thead className="table-light">
@@ -85,11 +72,6 @@ function Dashboard() {
                                 </table>
                             </div>
                         )}
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
-}
+                   
 
 export default Dashboard;
