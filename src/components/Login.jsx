@@ -94,6 +94,35 @@ function Login() {
                                                 );
                                             }}
                                         </Formik>
+                                        
+                                        <div className="mt-4 pt-3 border-top">
+                                            <h3 className="text-center mb-3 text-muted fs-5">Demo Accounts</h3>
+                                            <div className="table-responsive">
+                                                <table className="table table-sm table-bordered mb-0">
+                                                    <thead className="table-light">
+                                                        <tr>
+                                                            <th className="text-center">Role</th>
+                                                            <th className="text-center">Username/Password</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td className="text-center">User</td>
+                                                            <td className="text-center">mani/123</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td className="text-center">Manager</td>
+                                                            <td className="text-center">venki/123</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td className="text-center">Admin</td>
+                                                            <td className="text-center">praveen/123</td>
+                                                            
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -101,7 +130,6 @@ function Login() {
                     </div>
                 </div>
         );
-
 }
 
 export default Login;
