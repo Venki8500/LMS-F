@@ -8,6 +8,7 @@ import { Provider } from 'react-redux';
 import {
   createBrowserRouter,
   RouterProvider,
+  Navigate,
 } from "react-router-dom";
 import Login from './components/Login';
 import Signup from './components/Signup';
@@ -17,39 +18,74 @@ import ManagerDashboard from './components/ManagerDashboard';
 import Addloan from './components/Addloan';
 import Addmanager from './components/Addmanager';
 
+// Protected Route Component
+const ProtectedRoute = ({ children, allowedRoles }) => {
+  const token = localStorage.getItem("token");
+  const role = localStorage.getItem("role");
+  
+  if (!token) {
+    return <Navigate to="/login" replace />;
+  }
+  
+  if (allowedRoles && !allowedRoles.includes(role)) {
+    return <Navigate to="/login" replace />;
+  }
+  
+  return children;
+};
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element:<App></App>,
-    children:[
+    element: <App />,
+    children: [
       {
-        path:"/login",
-        element:<Login></Login>
+        path: "/login",
+        element: <Login />
       },
       {
-        path:"/signup",
-        element:<Signup></Signup>
+        path: "/signup",
+        element: <Signup />
       },
       {
-        path:"/dashboard",
-        element:<Dashboard></Dashboard>
+        path: "/dashboard",
+        element: (
+          <ProtectedRoute allowedRoles={["user"]}>
+            <Dashboard />
+          </ProtectedRoute>
+        )
       },
       {
-        path:"/admindashboard",
-        element:<AdminDashboard></AdminDashboard>
+        path: "/admindashboard",
+        element: (
+          <ProtectedRoute allowedRoles={["admin"]}>
+            <AdminDashboard />
+          </ProtectedRoute>
+        )
       },
       {
-        path:"/addmanager",
-        element:<Addmanager></Addmanager>
+        path: "/addmanager",
+        element: (
+          <ProtectedRoute allowedRoles={["admin"]}>
+            <Addmanager />
+          </ProtectedRoute>
+        )
       },
       {
-        path:"/managerdashboard",
-        element:<ManagerDashboard></ManagerDashboard>
+        path: "/managerdashboard",
+        element: (
+          <ProtectedRoute allowedRoles={["manager"]}>
+            <ManagerDashboard />
+          </ProtectedRoute>
+        )
       },
       {
-        path:"/addloan",
-        element:<Addloan></Addloan>
+        path: "/addloan",
+        element: (
+          <ProtectedRoute allowedRoles={["manager"]}>
+            <Addloan />
+          </ProtectedRoute>
+        )
       }
     ]
   },
